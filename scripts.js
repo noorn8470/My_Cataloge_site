@@ -24,15 +24,20 @@
  */
 
 
-const FRESH_PRINCE_URL = "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
-const CURB_POSTER_URL = "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
-const EAST_LOS_HIGH_POSTER_URL = "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
-
+const HTML_CSS_URL= "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
+const JAVASCRIPT_URL = "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
+const DATA_STRUCTURES_DATA_BASES = "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
+const PYTHON_URL = "https://example.com/python-image.jpg"; // Placeholder image URL
+const CPP_URL = "https://example.com/cpp-image.jpg"; // Placeholder image URL
+const MACHINE_LEARNING_URL = "https://example.com/machine-learning-image.jpg"; // Placeholder image URL
 // This is an array of strings (TV show titles)
-let titles = [
-    "Fresh Prince of Bel Air",
-    "Curb Your Enthusiasm",
-    "East Los High"
+let courses = [
+    { title: "Learn HTML & CSS"} //, description: "Start your web development journey with the basics of HTML and CSS.", imageURL: HTML_CSS_URL },
+    { title: "Learn JavaScript"}//, description: "Dive deeper into web development with JavaScript.", imageURL: JAVASCRIPT_URL },
+    { title: "Learn JavaScript"}//, description: "How to use Datastructures and Databases.", imageURL: DATA_STRUCTURES_DATA_BASES },
+    { title: "Learn Python"}//, description: "Explore Python, one of the most versatile programming languages.", imageURL: PYTHON_URL },
+    { title: "Learn C++"}//, description: "Understand the fundamentals of system programming with C++.", imageURL: CPP_URL },
+    { title: "Machine Learning"}//, description: "Unlock the potential of AI with Machine Learning.", imageURL: MACHINE_LEARNING_URL },
 ];
 // Your final submission should have much more data than this, and 
 // you should use more than just an array of strings to store it all.
@@ -42,37 +47,26 @@ let titles = [
 function showCards() {
     const cardContainer = document.getElementById("card-container");
     cardContainer.innerHTML = "";
-    const templateCard = document.querySelector(".card");
+    const templateCard = document.querySelector(".card").cloneNode(true); // Clone the template card
+    templateCard.style.display = "none"; // Ensure the template is hidden after cloning
     
-    for (let i = 0; i < titles.length; i++) {
-        let title = titles[i];
 
-        // This part of the code doesn't scale very well! After you add your
-        // own data, you'll need to do something totally different here.
-        let imageURL = "";
-        if (i == 0) {
-            imageURL = FRESH_PRINCE_URL;
-        } else if (i == 1) {
-            imageURL = CURB_POSTER_URL;
-        } else if (i == 2) {
-            imageURL = EAST_LOS_HIGH_POSTER_URL;
-        }
-
-        const nextCard = templateCard.cloneNode(true); // Copy the template card
-        editCardContent(nextCard, title, imageURL); // Edit title and image
-        cardContainer.appendChild(nextCard); // Add new card to the container
-    }
+    ourses.forEach(course => {
+        const nextCard = templateCard.cloneNode(true); // Clone the template for each new card
+        editCardContent(nextCard, course.title, course.description, course.imageURL); // Pass course details to edit function
+        cardContainer.appendChild(nextCard); // Add the card to the container
+    });
 }
 
 function editCardContent(card, newTitle, newImageURL) {
-    card.style.display = "block";
+    card.style.display = "block"; // Make the card visible
 
-    const cardHeader = card.querySelector("h2");
-    cardHeader.textContent = newTitle;
-
-    const cardImage = card.querySelector("img");
-    cardImage.src = newImageURL;
-    cardImage.alt = newTitle + " Poster";
+// Update the card's title, image, and description
+    card.querySelector("h2").textContent = title;
+    card.querySelector("img").src = imageURL;
+    card.querySelector("img").alt = title + " Poster";
+    const bulletPoints = card.querySelectorAll("li");
+    bulletPoints[0].textContent = description; // Using the first bullet point for the description
 
     // You can use console.log to help you debug!
     // View the output by right clicking on your website,
@@ -89,6 +83,6 @@ function quoteAlert() {
 }
 
 function removeLastCard() {
-    titles.pop(); // Remove last item in titles array
+    courses.pop(); // Remove last item in titles array
     showCards(); // Call showCards again to refresh
 }
