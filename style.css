@@ -2,17 +2,30 @@ html,
 body {
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column; /* Stacks elements vertically */
+    align-items: center; /* Center-aligns items horizontally */
+    min-height: 100vh; /* Minimum height of 100% of the viewport height */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    background-color: rgb(240, 230, 241) 
 }
+
 
 .main-header {
-    background-color: rgba(0, 0, 0, .3);
+    position: relative ;
+    background-color: rgba(233, 138, 138, 0.3);
     padding-bottom: 10px;
+    text-align: center; /* Center the title */
+    width: 100%;
+    min-height:auto;
 }
 
+
+  
 .title {
     text-align: center;
     margin: 0;
-    font-size: 8em;
+    font-size: 4em;
     font-family: "Helvetica";
     font-weight: normal;
     color: white;
@@ -22,49 +35,72 @@ body {
     display: flex;
     justify-content: center;
     margin: 20px;
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    gap: 20px; /* Spacing between items */
+    max-width: 1200px; /* Maximum width of the container */
+    background-color: rgb(233, 205, 246) ;
 }
 
 .card {
     width: 300px;
-    border: 1px solid #ccc;
+    border: 1px solid #c0e7ef;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 5px;
 }
+
+ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 0;
+    font-family: "Verdana";
+    font-weight: "bold";
+    color: #0d8417;
+  }
 
 .card-content {
     padding: 20px;
     font-family: "Verdana";
-    color: #777;
+    color: #d11e1e;
+    background-color: rgb(255, 255, 255);
+    gap: 20x;
 }
 
 .card-content h2 {
     margin-top: 0;
     font-size: 20px;
+    background-color: rgb(255, 255, 255);
 }
 
 .card img {
     width: 100%;
     height: auto;
+    gap: 20X;
+    margin: 10x;
 }
 
 .footer {
     display: flex;
     justify-content: center;
-    background-color: rgba(0, 0, 0, .3);
+    background-color: rgba(233, 138, 138, 0.3);
     padding: 10px;
+    width: 100%; /* Ensure the footer spans the full width of the viewport */
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+    margin-top: auto; /* Pushes the footer to the bottom */
+    
 }
 
 button {
     text-align: center;
-    background-color: #666;
+    background-color: #54eec5;
     border: none;
     padding-left: 10px;
     padding-right: 10px;
     height: 40px;
     border-radius: 10px;
-    color: white;
+    color: rgb(84, 74, 222);
     font-size: 22px;
     cursor: pointer;
     margin: 5px;
+    
 }
+

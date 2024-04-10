@@ -24,20 +24,20 @@
  */
 
 
-const HTML_CSS_URL= "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
-const JAVASCRIPT_URL = "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
-const DATA_STRUCTURES_DATA_BASES = "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
-const PYTHON_URL = "https://example.com/python-image.jpg"; // Placeholder image URL
-const CPP_URL = "https://example.com/cpp-image.jpg"; // Placeholder image URL
-const MACHINE_LEARNING_URL = "https://example.com/machine-learning-image.jpg"; // Placeholder image URL
+const HTML_CSS_URL= "HTML-and-CSS.webp";
+const JAVASCRIPT_URL = "JS.jpg";
+const DATA_STRUCTURES_DATA_BASES = "DBS.png";
+const PYTHON_URL = "Learn Python.jpg"; 
+const CPP_URL = "Learn C++.webp"; 
+const MACHINE_LEARNING_URL = "Machine Learning.png"; 
 // This is an array of strings (TV show titles)
 let courses = [
-    { title: "Learn HTML & CSS"} //, description: "Start your web development journey with the basics of HTML and CSS.", imageURL: HTML_CSS_URL },
-    { title: "Learn JavaScript"}//, description: "Dive deeper into web development with JavaScript.", imageURL: JAVASCRIPT_URL },
-    { title: "Learn JavaScript"}//, description: "How to use Datastructures and Databases.", imageURL: DATA_STRUCTURES_DATA_BASES },
-    { title: "Learn Python"}//, description: "Explore Python, one of the most versatile programming languages.", imageURL: PYTHON_URL },
-    { title: "Learn C++"}//, description: "Understand the fundamentals of system programming with C++.", imageURL: CPP_URL },
-    { title: "Machine Learning"}//, description: "Unlock the potential of AI with Machine Learning.", imageURL: MACHINE_LEARNING_URL },
+    { title: "Learn HTML & CSS", description: "Start your web development journey with the basics of HTML and CSS.", imageURL: HTML_CSS_URL },
+    { title: "Learn JavaScript", description: "Dive deeper into web development with JavaScript and build your own website.", imageURL: JAVASCRIPT_URL },
+    { title: "Data Structures & Databases", description: "How to use Datastructures and Databases.", imageURL: DATA_STRUCTURES_DATA_BASES },
+    { title: "Learn Python", description: "Explore Python, one of the most versatile programming languages.", imageURL: PYTHON_URL },
+    { title: "Learn C++", description: "Understand the fundamentals programming with C++ with practice projects.", imageURL: CPP_URL },
+    { title: "Machine Learning", description: "Unlock the potential of AI with Machine Learning and Artificial Intelligence .", imageURL: MACHINE_LEARNING_URL }
 ];
 // Your final submission should have much more data than this, and 
 // you should use more than just an array of strings to store it all.
@@ -47,31 +47,32 @@ let courses = [
 function showCards() {
     const cardContainer = document.getElementById("card-container");
     cardContainer.innerHTML = "";
-    const templateCard = document.querySelector(".card").cloneNode(true); // Clone the template card
-    templateCard.style.display = "none"; // Ensure the template is hidden after cloning
-    
+    const templateCard = document.querySelector(".card").cloneNode(true);
+    templateCard.style.display = "none"; // Make sure the template is not displayed
 
-    ourses.forEach(course => {
-        const nextCard = templateCard.cloneNode(true); // Clone the template for each new card
-        editCardContent(nextCard, course.title, course.description, course.imageURL); // Pass course details to edit function
-        cardContainer.appendChild(nextCard); // Add the card to the container
+    courses.forEach(course => {
+        const nextCard = templateCard.cloneNode(true); // Clone the template for a new card
+        // Corrected variable names to match function parameters
+        editCardContent(nextCard, course.title, course.description, course.imageURL); 
+        cardContainer.appendChild(nextCard);
     });
 }
 
-function editCardContent(card, newTitle, newImageURL) {
+function editCardContent(card, title, description, imageURL) {
     card.style.display = "block"; // Make the card visible
 
 // Update the card's title, image, and description
-    card.querySelector("h2").textContent = title;
-    card.querySelector("img").src = imageURL;
-    card.querySelector("img").alt = title + " Poster";
-    const bulletPoints = card.querySelectorAll("li");
-    bulletPoints[0].textContent = description; // Using the first bullet point for the description
+card.querySelector("h2").textContent = title;
+card.querySelector("img").src = imageURL;
+card.querySelector("img").alt = title + " Poster";
+// Assuming each card has 3 bullet points, and you want to use the first for description
+const bulletPoints = card.querySelectorAll("li");
+bulletPoints[0].textContent = description;
 
     // You can use console.log to help you debug!
     // View the output by right clicking on your website,
     // select "Inspect", then click on the "Console" tab
-    console.log("new card:", newTitle, "- html: ", card);
+    console.log("new card:", title, "- html: ", card);
 }
 
 // This calls the addCards() function when the page is first loaded
@@ -79,7 +80,7 @@ document.addEventListener("DOMContentLoaded", showCards);
 
 function quoteAlert() {
     console.log("Button Clicked!")
-    alert("I guess I can kiss heaven goodbye, because it got to be a sin to look this good!");
+    alert("Qoutes for what? Its ALL FREE!! ");
 }
 
 function removeLastCard() {
